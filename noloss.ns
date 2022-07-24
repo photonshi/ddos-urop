@@ -1,0 +1,18 @@
+# This is a simple ns script. Comments start with #.
+# We are creating a topology A--B--C
+
+set ns [new Simulator]                  
+source tb_compat.tcl
+
+set A [$ns node]
+set B [$ns node]
+set C [$ns node]
+set D [$ns node]
+
+set link0 [$ns duplex-link $A $B 100Mb 0ms DropTail]
+set lan0 [$ns make-lan "$B $C $D" 100Mb 0ms]
+
+$ns rtproto Static
+
+# Go!
+$ns run 
